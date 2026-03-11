@@ -3,7 +3,8 @@ import React from 'react'
 const Home = () => {
   return (
     <main>
-    <h1>Learn Horizon Website</h1>
+    <h1></h1>
+    
     </main>
   )
 }
