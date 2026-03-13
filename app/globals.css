@@ -1,36 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Reset */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-/* Smooth scrolling */
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-/* Body defaults */
-
-body{
-
-background:white;
-color:#1a1a1a;
-
-}
-:root{
-
---primary:#1F6F5C;
---accent:#C49A3A;
---dark:#1A1A1A;
---light:#F5F5F5;
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

@@ -1,12 +1,18 @@
-import React from 'react'
+import Container from "@/components/ui/Container";
 
-const Home = () => {
-  return (
-    <main>
-    <h1></h1>
-    
-    </main>
-  )
+
+export default function Home(){
+
+return(
+
+<main>
+< Container>
+
+
+
+</Container>    
+</main>
+
+)
+
 }
-
-export default Home
