@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Container from "@/components/ui/Container";
 
 
@@ -8,7 +9,7 @@ return(
 <main>
 < Container>
 
-
+<Footer />
 
 </Container>    
 </main>
