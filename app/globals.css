@@ -10,3 +10,11 @@ html, body, footer {
 *::after {
   box-sizing: border-box;
 }
+:root{
+
+--primary:#1F6F5C;
+--accent:#C49A3A;
+--dark:#1A1A1A;
+--light:#F5F5F5;
+
+}
