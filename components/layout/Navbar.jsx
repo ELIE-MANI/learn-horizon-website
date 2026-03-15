@@ -1,9 +1,13 @@
+'use client';
 import Link from "next/link"
 import Container from "../ui/Container"
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const pathname = usePathname();
+    const isHome = pathname === "/";
     return (
-  <nav className="w-full absolute top-0 left-0 z-50 bg-transparent">
+  <nav className={`w-full z-50 ${isHome ? " absolute top-0 left-0 text-white" : " bg-(--primary) text-white"}`}>
   <Container>
   <div className="flex justify-between items-center py-6 text-white">
     <h1 className="text-2xl font-bold">Learn Horizon</h1>
