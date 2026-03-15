@@ -14,17 +14,19 @@ export default function Hero() {
       />
       <div className="absolute inset-0 flex items-center pt-24 bg-linear-to-r from-black/70 via-black/40 to-transparent  ">
         <Container>
+          <div className="max-w-2xl">
           <h1 className="text-4xl mt-20 md:text-6xl font-bold text-white leading-tight">
-          Discover Rwanda in Its Purest Form
+          Discover Rwanda <span className="text-(--accent)">in</span> Its Purest Form
           </h1>
-          <p className="text-lg md:text-2xl max-w-xl mt-6">
+          <p className="text-white/70 text-lg md:text-2xl max-w-xl mt-6 leading-relaxed">
           Luxury safaris and unforgettable travel experiences.
           </p>
+          </div>
           <div className="mt-10 flex gap-6">
-            <Button className={"bg-[--accent] text-white hover:bg-[--primary-hover] transition-colors"}>
+            <Button>
             Explore Now
             </Button>
-          <Button>
+          <Button className="bg-(--accent) hover:bg-white hover:text-black transition-colors">
             Book Now
           </Button>
           </div>
