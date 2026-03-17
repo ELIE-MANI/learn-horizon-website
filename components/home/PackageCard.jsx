@@ -48,6 +48,9 @@ export default function PackageCard({title,image,duration,people,highlights,pric
         </p>
 
       </div>
+      <button className='mt-6 font-semibold w-full border py-3 text-sm hover:bg-black hover:text-white transition'>
+        VIEW DETAILS
+      </button>
      </div>
 
     </div>
