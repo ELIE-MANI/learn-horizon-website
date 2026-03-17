@@ -9,6 +9,13 @@ export default function ToursPreview() {
       image="/image/trekking.jpg"
       duration="5 days/ 4 nights"
       people="2-6 people"
+
+      highlights={[
+        "Gorilla trekking",
+       "Luxury accommodation",
+       "Cultural village visit",
+       "Professional guide"
+      ]}
       />
     </div>
   )

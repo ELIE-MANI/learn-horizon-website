@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-export default function PackageCard({title,image,duration,people}) {
-  return (
+export default function PackageCard({title,image,duration,people,highlights}) {
+  return (      
     <div className='bg-white rounded-lg overflow-hidden shadow'>
      <div className='relative'>
       <Image src={image} alt={title} width={500} height={500}
@@ -22,6 +22,19 @@ export default function PackageCard({title,image,duration,people}) {
     <p className="text-gray-500 text-sm">
     👥 {people}
     </p>
+    <div className='mt-5'>
+      <p className='text-xs uppercase text-gray-400'>
+        Highilights
+        </p>  
+     <ul className='mt-2 text-sm text-gray-600 space-y-1'>
+        {highlights.map((item, index) => (
+            <li key={index}>
+          • {item}   
+            </li>
+        ))}
+
+     </ul>
+    </div>
      </div>
 
     </div>
