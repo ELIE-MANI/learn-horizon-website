@@ -6,10 +6,10 @@ export default function ToursPreview() {
     <div>
       <PackageCard 
       title="Gorilla Encouter"
-      image="/image/trekking.jpg"
+      image="/image/trekk.jpg"
       duration="5 days/ 4 nights"
       people="2-6 people"
-
+       price="$2500"
       highlights={[
         "Gorilla trekking",
        "Luxury accommodation",

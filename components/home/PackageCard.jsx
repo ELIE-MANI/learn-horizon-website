@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-export default function PackageCard({title,image,duration,people,highlights}) {
+export default function PackageCard({title,image,duration,people,highlights,price}) {
   return (      
     <div className='bg-white rounded-lg overflow-hidden shadow'>
      <div className='relative'>
@@ -35,6 +35,19 @@ export default function PackageCard({title,image,duration,people,highlights}) {
 
      </ul>
     </div>
+      <div className='border-t mt-6 pt-6'>
+        <p className='text-xs text-gray-400'>
+          FROM  
+        </p>
+        
+        <p className='text-2xl font-bold'>
+        {price}
+        </p> 
+        <p className='text-xs text-gray-400'>
+            per person
+        </p>
+
+      </div>
      </div>
 
     </div>
