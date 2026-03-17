@@ -1,6 +1,8 @@
 import AboutPreview from "@/components/home/AboutPreview";
+import DestinationsPreview from "@/components/home/DestinationsPreview";
 import Hero from "@/components/home/Hero";
-import Container from "@/components/ui/Container";
+import ToursPreview from "@/components/home/ToursPreview";
+
 
 
 
@@ -10,9 +12,10 @@ return(
 
 <main>
 <Hero />
-< Container>
 <AboutPreview />
-</Container>    
+<DestinationsPreview />
+<ToursPreview />
+   
 </main>
 
 )
