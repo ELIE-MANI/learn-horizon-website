@@ -4,15 +4,20 @@ export default function ServiceCard({service}) {
 const {title,description,features,icon,dark} = service
   return (
     <div className={
-        `group p-8  border border-gray-300 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 
-        ${dark ? "bg-[#1A1A1A] text-white border-none" :
-            "bg-white hover:shadow-lg"
+        `group h-full flex flex-col p-8 rounded-2xl hover:-translate-y-1 transition duration-300 
+        ${dark ? "bg-[#1A1A1A] text-white shadow-xl" :
+            "bg-white border border-gray-300 hover:shadow-xl hover:border-[#C49A3A]"
          }
         `
     }>
      {/* ICON */}
-    <div className='w-14 h-14 flex items-center justify-center rounded-xl bg-[#F5F5F5] mb-6 group-hover:bg-[#1F6F5C] transition duration-300'>
-
+    <div  className={`
+        w-16 h-16 flex items-center justify-center rounded-2xl mb-6 transition duration-300
+        ${dark 
+        ? "bg-[#2A2A2A]"
+        : "bg-[#F8F8F8] group-hover:bg-[#1F6F5C]"
+        }
+        `}>
     <div className="text-[#1A1A1A] group-hover:text-white transition duration-300">
 
         {icon}
@@ -26,13 +31,13 @@ const {title,description,features,icon,dark} = service
         </h3>
         {/*DESCRIPTION*/}
         <p className={`
-        text-sm mb-4 leading-relaxed
+        text-sm mb-6 leading-relaxed
         ${dark ? "text-gray-300" : "text-gray-500"}
         `}>
          {description}
         </p>
         {/*FEATURE*/}
-        <ul className="text-sm space-y-1">
+        <ul className="text-sm space-y-2 mt-auto">
             {features.map((item,index) => (
              <li key={index}
              className={`${dark ? "text-gray-300" : "text-gray-600"}`}
@@ -42,7 +47,7 @@ const {title,description,features,icon,dark} = service
             ))}
 
         </ul>
-
+      <div className="mt-6"></div>
     </div>
   )
 }
