@@ -4,7 +4,7 @@ export default function ServiceCard({service}) {
 const {title,description,features,icon,dark} = service
   return (
     <div className={
-        `p-8 border rounded-xl transition duration-300
+        `group p-8  border border-gray-300rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 
         ${dark ? "bg-[#1A1A1A] text-white border-none" :
             "bg-white hover:shadow-lg"
          }
@@ -12,13 +12,13 @@ const {title,description,features,icon,dark} = service
     }>
      {/* ICON */}
      <div className={`
-        w-12 h-12 flex items-center justify-center border mb-6
-        ${dark ? "border-gray-700" : "border-gray-300"}
+        w-14 h-14 flex items-center justify-center rounded-xl bg-[#F5F5F5] border mb-6 group-hover:bg-[#1F6F5C] transition duration-300
+        ${dark ? "border-gray-700" : "border-gray-500"}
         `}>
         {icon}
     </div>  
       {/*TITLE*/}
-        <h3 className="text-xl font-semibold mb-3">
+        <h3 className="text-xl font-semibold mb-3 text-[#1A1A1A]">
           {title}
         </h3>
         {/*DESCRIPTION*/}
