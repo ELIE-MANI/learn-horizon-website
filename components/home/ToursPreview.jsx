@@ -49,9 +49,6 @@ const packages = [
 ]
 
 
-
-
-
 export default function ToursPreview() {
   return (
     <section className='relative py-24 bg-[#F5F5F5] '>
