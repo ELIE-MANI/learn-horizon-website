@@ -1,5 +1,10 @@
 import Container from "../ui/Container"
 import ServiceCard from "./ServiceCard"
+import { Hotel } from "lucide-react"
+import { Plane } from "lucide-react"
+import { Car } from "lucide-react"
+import { Compass } from "lucide-react"
+import { Ticket } from "lucide-react"
 
 
 export default function TravelPreview() {
@@ -12,7 +17,7 @@ export default function TravelPreview() {
            "Eco Resorts",
            "Tented Camps"
          ],
-          icon:"🏨"  
+          icon:<Hotel size={28}/>  
         },
         {
         title:"Flight Booking",
@@ -22,7 +27,7 @@ export default function TravelPreview() {
         "Flexible Options",
         "24/7 Support"
         ],
-        icon:"✈️"
+        icon:<Plane size={28} />
         },
 
         {
@@ -33,7 +38,7 @@ export default function TravelPreview() {
         "Airport Transfers",
         "City Tours"
         ],
-        icon:"🚙"
+        icon:<Car size={28} />
         },
 
         {
@@ -44,7 +49,7 @@ export default function TravelPreview() {
         "Multilingual",
         "Local Experts"
         ],
-        icon:"🧭"
+        icon:<Compass size={28} />
         }   
     ]
   return (
@@ -82,7 +87,7 @@ export default function TravelPreview() {
 
         features:["Best Prices","Premium Locations"],
 
-        icon:"🏨"
+        icon:<Hotel size={28} />
      }}
      />
      <ServiceCard
@@ -93,7 +98,7 @@ export default function TravelPreview() {
 
         features:["Permits","Reservations"],
 
-        icon:"🎫",
+        icon:<Ticket size={28}  />,
 
         dark:true
         }}
