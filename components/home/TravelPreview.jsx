@@ -89,7 +89,9 @@ export default function TravelPreview() {
 
         icon:<Hotel size={28} />,
 
-        buttonText:"Book Hotel"
+        buttonText:"Book Hotel",
+
+        link:"/booking"
      }
     
     }
@@ -106,7 +108,9 @@ export default function TravelPreview() {
         icon:<Ticket size={28} />,
         
         buttonText:"Book Ticket",
-
+         
+        link:"/booking",
+        
         dark:true
         }}
         />

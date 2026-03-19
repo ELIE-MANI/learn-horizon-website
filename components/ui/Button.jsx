@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Button({ children,className }) {
+export default function Button({ children,className,onClick }) {
   return (
     <button
       className={`bg-(--primary) text-white py-3 px-6 rounded-md cursor-pointer hover:bg-(--accent) transition-colors duration-300'

@@ -1,7 +1,19 @@
+"use client";
+import { useRouter } from "next/navigation"
 
 
 export default function ServiceCard({service}) {
-const {title,description,features,icon,dark,buttonText} = service
+
+const router = useRouter();  
+  
+const {title,description,features,icon,dark,buttonText,link} = service;
+
+const handleClick = () => {
+    if (link) {
+        router.push(link)
+    }
+}
+
   return (
     <div className={
         `group h-full flex flex-col p-8 rounded-2xl hover:-translate-y-1 transition duration-300 
@@ -58,7 +70,10 @@ ${dark
         </ul>
      {buttonText && (
 
-        <button className={`
+        <button 
+        
+        onClick={handleClick}
+        className={`
         mt-6 w-1/2 py-3 px-6 text-sm uppercase font-semibold rounded-xl 
         transition duration-300 transform hover:scale-105
 

@@ -1,8 +1,10 @@
 import Image from "next/image"
 import Container from "../ui/Container"
 import Button from "../ui/Button"
+import Link from "next/link"
 
 export default function Hero() {
+  
   return (
     <div className='h-screen relative'>
       <Image
@@ -23,12 +25,16 @@ export default function Hero() {
           </p>
           </div>
           <div className="mt-10 flex gap-6">
+            <Link href="/destinations">
             <Button>
             Explore Now
             </Button>
+            </Link>
+            <Link href="/booking">
           <Button className="bg-(--accent) hover:bg-white hover:text-black transition-colors">
             Book Now
           </Button>
+          </Link>
           </div>
         </Container>
       </div>
