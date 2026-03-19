@@ -78,7 +78,7 @@ export default function TravelPreview() {
       ))}  
 
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2  gap-8 mt-12">
      <ServiceCard
      service={{
         title:"Hotel Booking Service",
@@ -87,8 +87,13 @@ export default function TravelPreview() {
 
         features:["Best Prices","Premium Locations"],
 
-        icon:<Hotel size={28} />
-     }}
+        icon:<Hotel size={28} />,
+
+        buttonText:"Book Hotel"
+     }
+    
+    }
+     
      />
      <ServiceCard
         service={{
@@ -98,7 +103,9 @@ export default function TravelPreview() {
 
         features:["Permits","Reservations"],
 
-        icon:<Ticket size={28}  />,
+        icon:<Ticket size={28} />,
+        
+        buttonText:"Book Ticket",
 
         dark:true
         }}
