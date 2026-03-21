@@ -1,8 +1,8 @@
 "use client"
 
 import Container from '@/components/ui/Container'
-import { useState } from 'react'
-
+import { useForm } from 'react-hook-form'
+import z from 'zod'
 
 export default function Bookings() {
 const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ console.log('form data')
        Hotel Booking
       </h1>  
       <p className='text-gray-500 mb-8'>
-      Reserve your stay with our travel experts  
+       Reserve your stay with our travel experts  
       </p>
      <form
      onSubmit={handleSubmit}
