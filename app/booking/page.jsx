@@ -2,34 +2,24 @@
 
 import Container from '@/components/ui/Container'
 import { useForm } from 'react-hook-form'
-import z from 'zod'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { hotelSchema } from '@/lib/validations/hotelSchema'
 
 export default function Bookings() {
-const [formData, setFormData] = useState({
-  checkin:"",
-  checkout:"",
-  guests:"",
-  room:"",
-  firstName:"",
-  lastName:"",
-  email:"",
-  phone:"",
-  requests:""
+
+const {
+  register,
+  handleSubmit,
+  formState:{erros},
+  reset
+} = useForm({
+  resolver :zodResolver(hotelSchema)
 })
 
-const handleChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value
-  })
+const onSubmit = (data) => {
+  console.log(data)
+  reset()
 }
-const handleSubmit = (e) => {
-
-e.preventDefault()
-console.log('form data')
-}
-
-
   return (
     <section className='min-h-screen bg-[#F9F9F9] py-24'>
     <Container>
@@ -41,7 +31,7 @@ console.log('form data')
        Reserve your stay with our travel experts  
       </p>
      <form
-     onSubmit={handleSubmit}
+     onSubmit={handleSubmit(onSubmit)}
      className='space-y-6'>
       <div>
         <h2 className='text-xl font-semibold mb-4'>
@@ -54,8 +44,7 @@ console.log('form data')
           </label>
           <input 
           type="date" 
-          name='checkin'
-          onChange={handleChange}
+          {...register("checkin")}
           className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
           />
 
@@ -67,8 +56,7 @@ console.log('form data')
           </label>
           <input 
           type="date" 
-          name='checkout'
-          onChange={handleChange}
+          {...register("checkout")}
           className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
           />
 
@@ -78,8 +66,7 @@ console.log('form data')
            Guests
           </label>
           <select
-          name='guests'
-          onChange={handleChange}
+          {...register("guests")}
           className='w-full border border-gray-300 rounded-lg p-3'>
             <option>1 Guest</option>
             <option>2 Guests</option>
@@ -93,8 +80,7 @@ console.log('form data')
            Room Type
           </label>
           <select
-          name='room'
-          onChange={handleChange}
+           {...register("room")}
           className='w-full border border-gray-300 rounded-lg p-3'>
             <option>Standard Room</option>
             <option>Deluxe Room</option>
@@ -114,35 +100,59 @@ console.log('form data')
            
          <input 
          type="text"
-         name='firstName'
-         onChange={handleChange}
+         {...register("firstName")}
          placeholder='First Name'
          className='border border-gray-300 rounded-lg p-3'
           />  
+        
+         {erros.firstName && (
+         
+         <p className='text-red-500 text-sm'>
+          {erros.firstName.message}
+         </p>
+
+         )}
+
 
         <input 
          type="text"
-         name='lastName'
-         onChange={handleChange}
+        {...register("lastName")}
          placeholder='Last Name'
          className='border border-gray-300 rounded-lg p-3'
           />
+         {erros.firstName && (
+         
+         <p className='text-red-500 text-sm'>
+          {erros.lastName.message}
+         </p>
 
+         )}
         <input 
          type="email"
-         name='email'
-         onChange={handleChange}
+         {...register("email")}
          placeholder='Email Address'
          className='border border-gray-300 rounded-lg p-3'
         />
+         {erros.firstName && (
+         
+         <p className='text-red-500 text-sm'>
+          {erros.email.message}
+         </p>
 
+         )}
         <input 
          type="tel"
-         name='phone'
-         onChange={handleChange}
+         {...register("phone")}
          placeholder='Phone Number'
          className='border border-gray-300 rounded-lg p-3'
         />      
+        {erros.firstName && (
+         
+         <p className='text-red-500 text-sm'>
+          {erros.phone.message}
+         </p>
+
+         )}
         </div>
        </div>
 
@@ -151,8 +161,7 @@ console.log('form data')
          Special Requests
         </h2>
         <textarea
-        name='requests'
-        onChange={handleChange}
+        {...register("requests")}
          placeholder='Any special requirements' 
          className="w-full border border-gray-300 rounded-lg p-4 h-32"
          ></textarea>
