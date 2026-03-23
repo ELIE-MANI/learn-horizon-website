@@ -1,85 +1,41 @@
-import { Resend } from "resend";
-import { hotelSchema } from "@/lib/validations/hotelSchema";
-import { success } from "zod";
+import { hotelSchema } from "@/lib/validations/hotelSchema"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import {
 
-export async function POST (req){
-try {
+sendClientBookingEmail,
+sendCustomerConfirmationEmail
 
- const body = await req.json();
- const validatedData = hotelSchema.parse(body) ; 
- const {
+} from "@/lib/email/sendBookingEmails"
 
-firstName,
-lastName,
-email,
-phone,
-checkin,
-checkout,
-guests,
-room,
-requests
+export async function POST(req){
 
-} = validatedData
+try{
 
-// Email to client
-await resend.emails.send({
-  from: 'Bookings <onboarding@resend.dev>',
-  to:'Horizonlearn57@gmail.com',
-  subject:'New Hotel Booking',
-  html:`
-  <h2>New Booking Request</h2>
+const body = await req.json()
 
-    <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+const validatedData = hotelSchema.parse(body)
 
-    <p><strong>Email:</strong> ${email}</p>
+await Promise.all ([
+sendClientBookingEmail(validatedData),
 
-    <p><strong>Phone:</strong> ${phone}</p>
+ sendCustomerConfirmationEmail(validatedData)
+])
 
-    <p><strong>Check-in:</strong> ${checkin}</p>
-
-    <p><strong>Check-out:</strong> ${checkout}</p>
-
-    <p><strong>Guests:</strong> ${guests}</p>
-
-    <p><strong>Room:</strong> ${room}</p>
-
-    <p><strong>Requests:</strong> ${requests || "None"}</p>
-    
- ` 
- 
-})
-// Confirmation email to customer
-await resend.emails.send({
-from: 'Learn Horizon Travel <onboarding@resend.dev>', 
-to: email,
-subject:'Booking Request Received',
-
-html: `
-
-<h2>Booking received</h2>
-
-<p>Hello ${firstName},</p>
-
-<p>We received your booking request.</p>
-
-<p>Our travel team will contact you soon.</p>
-
-<p>Thank you for choosing us.</p>
-
-`
-
-})
 return Response.json({
-    success:true
+
+success:true
+
 })
 
+}catch(error){4
+ console.error(error)   
 
-} catch (error) {
-	return Response.json({
-     error:"Something went wrong"
+return Response.json({
 
-    },{status:500});
+error:"Booking failed"
+
+},{status:500})
+
 }
+
 }
