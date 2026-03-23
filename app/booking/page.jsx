@@ -4,13 +4,14 @@ import Container from '@/components/ui/Container'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { hotelSchema } from '@/lib/validations/hotelSchema'
+import FormField from '@/components/form/FormField'
 
 export default function Bookings() {
 
 const {
   register,
   handleSubmit,
-  formState:{erros},
+  formState:{errors},
   reset
 } = useForm({
   resolver :zodResolver(hotelSchema)
@@ -47,7 +48,11 @@ const onSubmit = (data) => {
           {...register("checkin")}
           className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
           />
-
+         {errors.checkin && (
+          <p className="text-red-500 text-sm">
+          {errors.checkin.message}
+          </p>
+          )}    
          </div>
           
           <div>
@@ -58,34 +63,46 @@ const onSubmit = (data) => {
           type="date" 
           {...register("checkout")}
           className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
+          
+          
+          
           />
 
          </div>
          <div>
-          <label className='block text-sm font-medium mb-2'>
-           Guests
-          </label>
-          <select
-          {...register("guests")}
-          className='w-full border border-gray-300 rounded-lg p-3'>
-            <option>1 Guest</option>
-            <option>2 Guests</option>
-            <option>3 Guests</option>
-            <option>4 Guests</option>
-          </select>
+        <FormField
+        label="Guests"
+        name="guests"
+        register={register}
+        error={errors.guests}
+        as='select'
+        
+        options={[
+          "1 Guest",
+          "2 Guests",
+          "3 Guests",
+          "4 Guests"
+        ]}
+        
+        />
 
          </div>
         <div>
-          <label className='block text-sm font-medium mb-2'>
-           Room Type
-          </label>
-          <select
-           {...register("room")}
-          className='w-full border border-gray-300 rounded-lg p-3'>
-            <option>Standard Room</option>
-            <option>Deluxe Room</option>
-            <option>Suite</option>
-          </select>
+        <FormField
+        label="Room Type"
+        name="room"
+        register={register}
+        error={errors.room}
+        as='select'
+        
+        options={[
+          "Standard Room",
+          "Deluxe Room",
+          "Suite"
+          
+        ]}
+        
+        />
         </div>
         
         </div>
@@ -98,61 +115,42 @@ const onSubmit = (data) => {
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
            
-         <input 
-         type="text"
-         {...register("firstName")}
-         placeholder='First Name'
-         className='border border-gray-300 rounded-lg p-3'
-          />  
+        <FormField
+        label="First Name"
+        name="first name"
+        register={register}
+        error={errors.firstName}
+        placeholder="First Name"
         
-         {erros.firstName && (
-         
-         <p className='text-red-500 text-sm'>
-          {erros.firstName.message}
-         </p>
-
-         )}
-
-
-        <input 
-         type="text"
-        {...register("lastName")}
-         placeholder='Last Name'
-         className='border border-gray-300 rounded-lg p-3'
-          />
-         {erros.firstName && (
-         
-         <p className='text-red-500 text-sm'>
-          {erros.lastName.message}
-         </p>
-
-         )}
-        <input 
-         type="email"
-         {...register("email")}
-         placeholder='Email Address'
-         className='border border-gray-300 rounded-lg p-3'
         />
-         {erros.firstName && (
-         
-         <p className='text-red-500 text-sm'>
-          {erros.email.message}
-         </p>
+         <FormField
+        label="Last Name"
+        name="last name"
+        register={register}
+        error={errors.lastName}
+        placeholder="Last Name"
+        
+        />
+     
+        <FormField
+        label="Email"
+        type='email'
+        name="email"
+        register={register}
+        error={errors.email}
+        placeholder="Email Address"
+        
+        />
 
-         )}
-        <input 
-         type="tel"
-         {...register("phone")}
-         placeholder='Phone Number'
-         className='border border-gray-300 rounded-lg p-3'
-        />      
-        {erros.firstName && (
-         
-         <p className='text-red-500 text-sm'>
-          {erros.phone.message}
-         </p>
-
-         )}
+         <FormField
+        label="Phone Number"
+        type='tel'
+        name="phone"
+        register={register}
+        error={errors.firstName}
+        placeholder="First Name"
+        
+        />
         </div>
        </div>
 
@@ -160,11 +158,15 @@ const onSubmit = (data) => {
         <h2 className='text-xl font-semibold mb-4'>
          Special Requests
         </h2>
-        <textarea
-        {...register("requests")}
-         placeholder='Any special requirements' 
-         className="w-full border border-gray-300 rounded-lg p-4 h-32"
-         ></textarea>
+         <FormField
+        label="Special Requests"
+        name="requests"
+        register={register}
+        error={errors.requests}
+        as='textarea'
+        placeholder="Any Special requirements"
+               
+        />
        </div>
        <button
        className='w-full bg-[#C49A3A] text-white py-4 rounded-xl font-semibold hover:bg-[#b68a2f] transition'
