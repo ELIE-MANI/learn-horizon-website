@@ -5,8 +5,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { hotelSchema } from '@/lib/validations/hotelSchema'
 import FormField from '@/components/form/FormField'
+import { useState } from 'react'
+import { submitBooking } from '@/lib/api/bookings'
+
 
 export default function Bookings() {
+const [isSubmitting, setIsSubmitting] = useState(false);
+const [submitStatus, setSubmitStatus] = useState(null);
 
 const {
   register,
@@ -17,9 +22,23 @@ const {
   resolver :zodResolver(hotelSchema)
 })
 
-const onSubmit = (data) => {
-  console.log(data)
-  reset()
+const onSubmit = async (data) => {
+   setIsSubmitting(true)
+   setSubmitStatus(null)
+  
+   try{
+    const result = await submitBooking(data)
+    if (result.success) {
+      setSubmitStatus("sucesss")
+  reset() 
+    }else {
+      setSubmitStatus("error")
+    }
+   } catch(error){
+    setSubmitStatus("error")
+   }finally {
+    setIsSubmitting(false)
+   }
 }
   return (
     <section className='min-h-screen bg-[#F9F9F9] py-24'>
@@ -168,13 +187,40 @@ const onSubmit = (data) => {
                
         />
        </div>
-       <button
-       className='w-full bg-[#C49A3A] text-white py-4 rounded-xl font-semibold hover:bg-[#b68a2f] transition'
+       <button type='submit'
+       disabled={isSubmitting}
+       className={`w-full bg-[#C49A3A] text-white py-4 rounded-xl font-semibold hover:bg-[#b68a2f] transition
+        ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}
+        `}
        >
-       Confirm Booking
+       {isSubmitting ? (
+
+        <span className="flex gap-2 items-center">
+
+        <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"/>
+
+        Sending...
+
+        </span>
+
+        ):(
+
+        "Book Now"
+
+        )}
        </button>
      </form>
-     
+     {submitStatus === "success" &&(
+      <div className='mt-4 p-4 bg-green-100 text-green-800 rounded'>
+       Booking request sent successfully. We will contact you soon.
+      </div>
+     )}
+
+     {submitStatus === "error" &&(
+      <div className='mt-4 p-4 bg-red-100 text-red-800 rounded'>
+       Something went wrong. Please try again.
+      </div>
+     )}
     </div>
     </Container>
     </section>
