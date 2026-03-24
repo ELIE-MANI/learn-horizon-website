@@ -10,8 +10,8 @@ export default function Hero() {
       <Image
         src="/image/hero3.jpg"
         alt="Hero Image"
-        layout="fill"
-        objectFit="priority"
+        fill
+        style={{objectFit:"priority"}}
         className="opacity-70 object-cover"
       />
       <div className="absolute inset-0 flex items-center pt-24 bg-linear-to-r from-black/70 via-black/40 to-transparent  ">
