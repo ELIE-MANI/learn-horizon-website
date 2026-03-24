@@ -26,10 +26,10 @@ const {
 const returnTrip = watch("returnTrip");
 useEffect(() => {
   if (!returnTrip) {
-    reset((prev) => ({
-      ...prev,
-      returnDate: undefined
-    }));
+   reset({
+  ...watch(),
+  returnDate: undefined
+});
   }
 }, [returnTrip, reset]);
 
@@ -62,7 +62,7 @@ const onSubmit = async (data) => {
   return (
     <section className='min-h-screen bg-[#F9F9F9] py-24'>
     <Container>
-    <div className='bg-white p-10 rounded-2xl shadow-lg'>
+    <div className='bg-white p-10 rounded-2xl shadow-lg '>
       <h1 className='text-3xl font-bold mb-8 text-[#1A1A1A]'>
        Ticket Booking
       </h1>  
@@ -72,31 +72,27 @@ const onSubmit = async (data) => {
      <form
      onSubmit={handleSubmit(onSubmit)}
      className='space-y-6'>
-     
-      <div>
+     {/* ===== Ticket Details ===== */}
+      <div >
         <h2 className='text-xl font-semibold mb-4'>
           Ticket Details
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
          
-          <div>
           <FormField
             label="Departure City"
             name="departure"
             register={register}
             error={errors.departure}
             />
-        
-         </div>
-         <div>
+    
             <FormField
             label="Destination"
             name="destination"
             register={register}
             error={errors.destination}
             />
-         </div>
-         <div>
+        
          <FormField
             label="Return Trip"
             name="returnTrip"
@@ -104,8 +100,7 @@ const onSubmit = async (data) => {
             register={register}
             error={errors.returnTrip}
             />
-            </div> 
-          <div>
+            
          <FormField
             label="Travel Date"
             type='date'
@@ -114,7 +109,7 @@ const onSubmit = async (data) => {
             error={errors.travelDate}
             />
           
-         </div>
+        
           
          {returnTrip && (
         <div>
@@ -127,7 +122,7 @@ const onSubmit = async (data) => {
             />
         </div>
         )}  
-          <div>
+         
         <FormField
         label="Passengers"
         name="passengers"
@@ -142,13 +137,12 @@ const onSubmit = async (data) => {
         ]}
                 
         />
-
-         </div>
+  
       
        </div>
       
       </div>
-        
+        {/* ===== Passenger Information ===== */}
         <div>
         <h2 className='text-xl font-semibold mb-4'>
         Passenger Information
@@ -193,7 +187,7 @@ const onSubmit = async (data) => {
         />
         </div>
        </div>
-
+      {/* ===== Special Requests ===== */}
        <div>
         <h2 className='text-xl font-semibold mb-4'>
          Special Requests
