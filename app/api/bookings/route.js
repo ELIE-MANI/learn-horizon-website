@@ -1,11 +1,7 @@
 import { hotelSchema } from "@/lib/validations/hotelSchema"
 
-import {
+import { sendClientBookingEmail, sendCustomerConfirmationEmail } from "@/lib/email/sendBookingEmails"
 
-sendClientBookingEmail,
-sendCustomerConfirmationEmail
-
-} from "@/lib/email/sendBookingEmails"
 
 export async function POST(req){
 
@@ -27,11 +23,11 @@ success:true
 
 })
 
-}catch(error){4
- console.error(error)   
+}catch(error){
+ console.error("BOOKING API",error)   
 
 return Response.json({
-
+success:false,
 error:"Booking failed"
 
 },{status:500})

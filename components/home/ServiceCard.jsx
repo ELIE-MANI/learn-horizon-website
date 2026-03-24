@@ -23,13 +23,13 @@ const {title,description,features,icon,dark,buttonText,link} = service;
         }
         `}>
     <div className={`
-transition duration-300
+        transition duration-300
 
-${dark 
-? "text-[#F8F8F8] "
-: "text-[#1A1A1A] group-hover:text-white"
-}
-`}>
+        ${dark 
+        ? "text-[#F8F8F8] "
+        : "text-[#1A1A1A] group-hover:text-white"
+        }
+        `}>
 
         {icon}
 

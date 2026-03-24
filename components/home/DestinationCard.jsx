@@ -1,39 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-const Destinations =[
-    {
-        name: "Volcanoes National Park",
-        image:"/image/volcano.jpg",
-        description:"Home to endangered mountain gorillas",
-        featured:true   
 
-    },
-
-    {
-        name: "Akagera National Park",
-        image:"/image/akagera.jpg",
-        description:"Big five safari experience",
-    
-    },
-
-    {
-        name: "Nyungwe Forest National Park",
-        image:"/image/nyungwe.jpg",
-        description:"Ancient rainforest canopy walks",
-
-    },
-    {
-        name: "Lake Kivu",
-        image:"/image/lake.jpg",
-        description:"Relaxing lakeside retreats",
-
-    },
-    {
-        name: "Kibeho",
-        image:"/image/kibeho.jpg",
-        description:"Spiritual pilgrimage site",
-    }
-];
 
 
 export default function DestinationCard({title,image,description}) {

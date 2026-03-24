@@ -11,7 +11,7 @@ import { submitBooking } from '@/lib/api/bookings'
 
 export default function Bookings() {
 const [isSubmitting, setIsSubmitting] = useState(false);
-const [submitStatus, setSubmitStatus] = useState(null);
+const [submitStatus, setSubmitStatus] = useState("idle");
 
 const {
   register,
@@ -24,17 +24,18 @@ const {
 
 const onSubmit = async (data) => {
    setIsSubmitting(true)
-   setSubmitStatus(null)
+   setSubmitStatus("loading")
   
    try{
     const result = await submitBooking(data)
     if (result.success) {
-      setSubmitStatus("sucesss")
+      setSubmitStatus("sucess")
   reset() 
     }else {
       setSubmitStatus("error")
     }
    } catch(error){
+    console.error(error)
     setSubmitStatus("error")
    }finally {
     setIsSubmitting(false)
@@ -82,10 +83,12 @@ const onSubmit = async (data) => {
           type="date" 
           {...register("checkout")}
           className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
-          
-          
-          
-          />
+           />      
+           {errors.checkout && (
+          <p className="text-red-500 text-sm">
+          {errors.checkout.message}
+          </p>
+          )} 
 
          </div>
          <div>
@@ -97,10 +100,10 @@ const onSubmit = async (data) => {
         as='select'
         
         options={[
-          "1 Guest",
-          "2 Guests",
-          "3 Guests",
-          "4 Guests"
+       "1 Guest",
+       "2 Guests",
+        "3 Guests",
+       "4 Guests"
         ]}
         
         />
@@ -136,7 +139,7 @@ const onSubmit = async (data) => {
            
         <FormField
         label="First Name"
-        name="first name"
+        name="firstName"
         register={register}
         error={errors.firstName}
         placeholder="First Name"
@@ -144,7 +147,7 @@ const onSubmit = async (data) => {
         />
          <FormField
         label="Last Name"
-        name="last name"
+        name="lastName"
         register={register}
         error={errors.lastName}
         placeholder="Last Name"
@@ -166,8 +169,8 @@ const onSubmit = async (data) => {
         type='tel'
         name="phone"
         register={register}
-        error={errors.firstName}
-        placeholder="First Name"
+        error={errors.phone}
+        placeholder="Phone Number"
         
         />
         </div>
