@@ -1,59 +1,78 @@
-
-
 export default function FormField({
-    label,
-    type="text",
-    name,
-    register,
-    error,
-    placeholder,
-    as="input",
-    options
+  label,
+  type = "text",
+  name,
+  register,
+  error,
+  placeholder,
+  as = "input",
+  options
 }) {
-
-const Component = as 
 
   return (
     <div className="space-y-2">
-    {label && (
-     <label className="block text-sm font-medium">
-        {label}
+      
+      {label && (
+        <label className="block text-sm font-medium">
+          {label}
         </label>
+      )}
 
-    )}
-      <Component
-      type={type}
+      {/* ✅ SELECT */}
+      {as === "select" ? (
+        <select
+          {...register(name)}
+          className={`
+            w-full border rounded-lg p-3
+            focus:outline-none focus:border-[#C49A3A]
+            ${error ? "border-red-500" : "border-gray-300"}
+          `}
+        >
+          <option value="">Select...</option>
 
-    {...register(name)}
+          {options?.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
 
-    placeholder={placeholder}
+      ) : as === "textarea" ? (
 
-    className={`
-    w-full border rounded-lg p-3
-    focus:outline-none focus:border-[#C49A3A]
+        /* ✅ TEXTAREA */
+        <textarea
+          {...register(name)}
+          placeholder={placeholder}
+          className={`
+            w-full border rounded-lg p-3
+            focus:outline-none focus:border-[#C49A3A]
+            ${error ? "border-red-500" : "border-gray-300"}
+          `}
+        />
 
-    ${error ? "border-red-500" : "border-gray-300"}
-      `}
-      >
-    {options && options.map((option,index)=>(
+      ) : (
 
-    <option key={index}>
+        /* ✅ INPUT */
+        <input
+          type={type}
+          {...register(name)}
+          placeholder={placeholder}
+          className={`
+            ${type === "checkbox" ? "w-auto" : "w-full"}
+            border rounded-lg p-3
+            focus:outline-none focus:border-[#C49A3A]
+            ${error ? "border-red-500" : "border-gray-300"}
+          `}
+        />
 
-    {option}
+      )}
 
-    </option>
-
-    ))}
-     </Component>
-     {error && (
-
-    <p className="text-red-500 text-sm">
-
-    {error.message}
-
-    </p>
-     )}
-     
+      {/* ✅ ERROR */}
+      {error && (
+        <p className="text-red-500 text-sm">
+          {error.message}
+        </p>
+      )}
     </div>
-  )
+  );
 }
