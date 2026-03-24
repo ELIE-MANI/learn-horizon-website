@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 export default function PackageCard({pkg}) {
   
   const {title,image,duration,people,highlights,price}=pkg
@@ -67,12 +68,13 @@ export default function PackageCard({pkg}) {
 
       </div>
       {/* BUTTON */}
-
+       <Link href={`/booking/tour?tour=${encodeURIComponent(title)}`}>
       <button className='mt-7 font-semibold w-full border py-3 text-sm hover:bg-black hover:text-white transition'>
         VIEW DETAILS
       </button>
+     </Link>
      </div>
-
+      
     </div>
   )
 }

@@ -5,7 +5,7 @@ import Container from '../ui/Container'
 const packages = [
   {
     id:1,
-    title:"Gorilla Ecounter",
+    title:"Gorilla Encounter",
     duration:"5 Days / 4 Nights",
     people:"4-6 People",
     price:"$2,500",

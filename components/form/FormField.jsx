@@ -6,7 +6,9 @@ export default function FormField({
   error,
   placeholder,
   as = "input",
-  options
+  options,
+  readOnly = false
+
 }) {
 
   return (
@@ -57,11 +59,13 @@ export default function FormField({
           type={type}
           {...register(name)}
           placeholder={placeholder}
+          readOnly={readOnly}
           className={`
             ${type === "checkbox" ? "w-auto" : "w-full"}
             border rounded-lg p-3
             focus:outline-none focus:border-[#C49A3A]
             ${error ? "border-red-500" : "border-gray-300"}
+            ${readOnly ? "bg-gray-100 cursor-not-allowed" : ""}
           `}
         />
 
