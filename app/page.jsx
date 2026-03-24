@@ -1,4 +1,5 @@
 import AboutPreview from "@/components/home/AboutPreview";
+import CTA from "@/components/home/CTA";
 import DestinationsPreview from "@/components/home/DestinationsPreview";
 import Hero from "@/components/home/Hero";
 import ToursPreview from "@/components/home/ToursPreview";
@@ -17,6 +18,7 @@ return(
 <DestinationsPreview />
 <ToursPreview />
 <TravelPreview />
+<CTA/>
    
 </main>
 
