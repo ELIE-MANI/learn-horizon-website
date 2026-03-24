@@ -3,10 +3,11 @@
 import Container from '@/components/ui/Container'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { hotelSchema } from '@/lib/validations/hotelSchema'
+import { ticketSchema } from '@/lib/validations/ticketSchema'
 import FormField from '@/components/form/FormField'
 import { useState } from 'react'
 import { submitBooking } from '@/lib/api/bookings'
+import { useEffect } from 'react'
 
 
 export default function Bookings() {
@@ -17,10 +18,20 @@ const {
   register,
   handleSubmit,
   formState:{errors},
-  reset
+  reset,
+  watch
 } = useForm({
-  resolver :zodResolver(hotelSchema)
+  resolver :zodResolver(ticketSchema)
 })
+const returnTrip = watch("returnTrip");
+useEffect(() => {
+  if (!returnTrip) {
+    reset((prev) => ({
+      ...prev,
+      returnDate: undefined
+    }));
+  }
+}, [returnTrip, reset]);
 
 const onSubmit = async (data) => {
   
@@ -31,7 +42,10 @@ const onSubmit = async (data) => {
 
   
    try{
-    const result = await submitBooking(data)
+    const result = await submitBooking({
+        ...data,
+        bookingType:"ticket"
+    })
     if (result.success) {
       setSubmitStatus("success")
     reset() 
@@ -50,103 +64,94 @@ const onSubmit = async (data) => {
     <Container>
     <div className='bg-white p-10 rounded-2xl shadow-lg'>
       <h1 className='text-3xl font-bold mb-8 text-[#1A1A1A]'>
-       Hotel Booking
+       Ticket Booking
       </h1>  
       <p className='text-gray-500 mb-8'>
-       Reserve your stay with our travel experts  
+       Book your travel tickets with our agency  
       </p>
      <form
      onSubmit={handleSubmit(onSubmit)}
      className='space-y-6'>
-      {submitStatus === "success" && (
-
-        <div className="mb-6 text-center text-green-600 font-semibold">
-
-        Booking sent ✓
-
-        </div>
-
-        )}
+     
       <div>
         <h2 className='text-xl font-semibold mb-4'>
-          Stay Details
+          Ticket Details
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-         <div>
-          <label className='block text-sm font-medium mb-2'>
-            Check-in Date
-          </label>
-          <input 
-          type="date" 
-          {...register("checkin")}
-          className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
-          />
-         {errors.checkin && (
-          <p className="text-red-500 text-sm">
-          {errors.checkin.message}
-          </p>
-          )}    
-         </div>
-          
+         
           <div>
-          <label className='block text-sm font-medium mb-2'>
-            Check-out Date
-          </label>
-          <input 
-          type="date" 
-          {...register("checkout")}
-          className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#C49A3A]'
-           />      
-           {errors.checkout && (
-          <p className="text-red-500 text-sm">
-          {errors.checkout.message}
-          </p>
-          )} 
-
+          <FormField
+            label="Departure City"
+            name="departure"
+            register={register}
+            error={errors.departure}
+            />
+        
          </div>
          <div>
+            <FormField
+            label="Destination"
+            name="destination"
+            register={register}
+            error={errors.destination}
+            />
+         </div>
+         <div>
+         <FormField
+            label="Return Trip"
+            name="returnTrip"
+            type="checkbox"
+            register={register}
+            error={errors.returnTrip}
+            />
+            </div> 
+          <div>
+         <FormField
+            label="Travel Date"
+            type='date'
+            name="travelDate"
+            register={register}
+            error={errors.travelDate}
+            />
+          
+         </div>
+          
+         {returnTrip && (
+        <div>
+            <FormField
+            label="Return Date"
+            name="returnDate"
+            type="date"
+            register={register}
+            error={errors.returnDate}
+            />
+        </div>
+        )}  
+          <div>
         <FormField
-        label="Guests"
-        name="guests"
+        label="Passengers"
+        name="passengers"
         register={register}
-        error={errors.guests}
+        error={errors.passengers}
         as='select'
         
         options={[
-       "1 Guest",
-       "2 Guests",
-        "3 Guests",
-       "4 Guests"
+        { label: "1 Passenger", value: 1 },
+        { label: "2 Passengers", value: 2 },
+        { label: "3 Passengers", value: 3 },
         ]}
-        
+                
         />
 
          </div>
-        <div>
-        <FormField
-        label="Room Type"
-        name="room"
-        register={register}
-        error={errors.room}
-        as='select'
-        
-        options={[
-          "Standard Room",
-          "Deluxe Room",
-          "Suite"
-          
-        ]}
-        
-        />
-        </div>
-        
-        </div>
+      
+       </div>
       
       </div>
         
         <div>
         <h2 className='text-xl font-semibold mb-4'>
-        Guest Information
+        Passenger Information
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
            
@@ -195,9 +200,9 @@ const onSubmit = async (data) => {
         </h2>
          <FormField
         label="Special Requests"
-        name="requests"
+        name="specialRequests"
         register={register}
-        error={errors.requests}
+        error={errors.specialRequests}
         as='textarea'
         placeholder="Any Special requirements"
                
@@ -215,7 +220,7 @@ const onSubmit = async (data) => {
 
         <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"/>
 
-        Processing booking...
+        Booking your ticket...
 
         </span>
 
