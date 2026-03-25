@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Gallery from "@/components/tour/Gallery"
 
 export default async function TourDetails({ params }) {
 
@@ -18,13 +19,7 @@ export default async function TourDetails({ params }) {
 
         {/* IMAGE */}
         <div className="relative h-125 w-full rounded-2xl overflow-hidden">
-          <Image
-            src={tour.image}
-            alt={tour.title}
-            fill
-            className="object-cover"
-            loading="eager"
-          />
+          <Gallery images={tour.gallery || [tour.image]} />
         </div>
 
         {/* CONTENT */}
