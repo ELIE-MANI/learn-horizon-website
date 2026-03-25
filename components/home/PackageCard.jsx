@@ -68,7 +68,7 @@ export default function PackageCard({pkg}) {
 
       </div>
       {/* BUTTON */}
-       <Link href={`/booking/tour?tour=${encodeURIComponent(title)}`}>
+       <Link href={`/tours/${pkg.slug}`}>
       <button className='mt-7 font-semibold w-full border py-3 text-sm hover:bg-black hover:text-white transition'>
         VIEW DETAILS
       </button>
