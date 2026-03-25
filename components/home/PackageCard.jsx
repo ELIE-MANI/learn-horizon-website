@@ -69,7 +69,7 @@ export default function PackageCard({pkg}) {
       </div>
       {/* BUTTON */}
        <Link href={`/tours/${pkg.slug}`}>
-      <button className='mt-7 font-semibold w-full border py-3 text-sm hover:bg-black hover:text-white transition'>
+      <button className='mt-7 font-semibold w-full border py-3 text-sm cursor-pointer hover:bg-black hover:text-white transition'>
         VIEW DETAILS
       </button>
      </Link>

@@ -133,7 +133,7 @@ export default async function TourDetails({ params }) {
 
     </div>
       <Link href={`/booking/tour?tour=${tour.title}`}>
-      <button className="mt-6 w-full bg-[#C49A3A] text-white py-3 rounded-lg font-semibold hover:bg-[#b68a2f] transition">
+      <button className="mt-6 w-full cursor-pointer bg-[#C49A3A] text-white py-3 rounded-lg font-semibold hover:bg-[#b68a2f] transition">
           Book This Tour
         </button>
        </Link>
