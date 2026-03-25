@@ -40,6 +40,37 @@ export default async function TourDetails({ params }) {
 
             <div className="mt-6">
               <h3 className="font-semibold text-lg">Highlights</h3>
+              {/* ===== ITINERARY ===== */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-bold mb-6">
+                Itinerary
+              </h2>
+
+              <div className="space-y-6">
+                {tour.itinerary?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-5 rounded-xl shadow-sm border"
+                  >
+                    <p className="text-sm text-gray-400 font-semibold">
+                      {item.day}
+                    </p>
+
+                    <h3 className="text-lg font-bold mt-1">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-gray-600 mt-2">
+                      {item.description}
+                    </p>
+
+                    <p className="text-sm text-[#1F6F5C] mt-2 font-medium">
+                      🍽 {item.meals}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
               <ul className="mt-3 space-y-2 text-gray-600">
                 {tour.highlights.map((item, index) => (
@@ -48,7 +79,7 @@ export default async function TourDetails({ params }) {
               </ul>
             </div>
           </div>
-
+           
           {/* RIGHT */}
           <div className="bg-white p-6 rounded-2xl shadow-md">
 
