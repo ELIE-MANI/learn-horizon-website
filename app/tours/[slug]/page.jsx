@@ -17,7 +17,7 @@ export default async function TourDetails({ params }) {
       <Container>
 
         {/* IMAGE */}
-        <div className="relative h-100 w-full rounded-2xl overflow-hidden">
+        <div className="relative h-125 w-full rounded-2xl overflow-hidden">
           <Image
             src={tour.image}
             alt={tour.title}
@@ -75,11 +75,34 @@ export default async function TourDetails({ params }) {
               </div>
             ))}
           </div>
+          {/* WHY CHOOSE THIS TOUR */}
+   <div className="mt-16">
+  <h2 className="text-2xl font-bold mb-6">
+    Why Choose This Tour
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-6">
+
+    {tour.whyChoose?.map((item, index) => (
+      <div
+        key={index}
+        className="bg-white p-5 rounded-xl shadow flex items-start gap-3"
+      >
+        <span className="text-[#1F6F5C] text-xl">✔</span>
+
+        <p className="text-gray-700">
+          {item}
+        </p>
+      </div>
+    ))}
+
+        </div>
+      </div>
             {/*PRICING*/}
             </div >
-            <div className="bg-white p-6 mt-5 rounded-2xl shadow-md">
+            <div className="bg-white p-6 mt-16 rounded-2xl shadow-md">
 
-      <p className="text-gray-500 text-sm">Pricing</p>
+      <p className="text-gray-500 font-bold text-lg">Pricing</p>
 
       <div className="mt-4 space-y-3">
 
@@ -109,11 +132,11 @@ export default async function TourDetails({ params }) {
       <p className="text-sm text-gray-400 mt-3">per person</p>
 
     </div>
-            <Link href={`/booking/tour?tour=${tour.title}`}>
-              <button className="mt-6 w-full bg-[#C49A3A] text-white py-3 rounded-lg font-semibold hover:bg-[#b68a2f] transition">
-                Book This Tour
-              </button>
-            </Link>
+      <Link href={`/booking/tour?tour=${tour.title}`}>
+      <button className="mt-6 w-full bg-[#C49A3A] text-white py-3 rounded-lg font-semibold hover:bg-[#b68a2f] transition">
+          Book This Tour
+        </button>
+       </Link>
       </Container>
     </section>
   )
