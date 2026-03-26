@@ -58,15 +58,7 @@ const onSubmit = async (data) => {
      <form
      onSubmit={handleSubmit(onSubmit)}
      className='space-y-6'>
-      {submitStatus === "success" && (
-
-        <div className="mb-6 text-center text-green-600 font-semibold">
-
-        Booking sent ✓
-
-        </div>
-
-        )}
+      
       <div>
         <h2 className='text-xl font-semibold mb-4'>
           Stay Details

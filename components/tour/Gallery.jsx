@@ -27,7 +27,7 @@ export default function Gallery({ images }) {
     >
       {images.map((img, index) => (
         <SwiperSlide key={index}>
-          <div className="relative w-full h-[500px]">
+          <div className="relative w-full h-125">
 
             <Image
               src={img}
