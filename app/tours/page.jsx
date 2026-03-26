@@ -9,35 +9,58 @@ export default function ToursPage() {
     <section className="bg-[#F9F9F9] py-24">
       <Container>
 
-        {/* HERO */}
-        <div className="text-center max-w-2xl mx-auto">
+        {/* HEADER */}
+        <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
-            Explore Our Tours
+            Our Tours
           </h1>
-          <p className="mt-4 text-gray-600">
-            Discover Rwanda through carefully designed travel experiences.
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Explore our curated collection of Rwanda’s most unforgettable travel experiences —
+            from gorilla trekking to luxury safari adventures.
           </p>
         </div>
 
-        {/* PACKAGES */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* FILTER BAR */}
+        <div className="mt-10 flex justify-center gap-4 flex-wrap">
+          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
+            All Tours
+          </button>
+          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
+            Wildlife
+          </button>
+          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
+            Adventure
+          </button>
+          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
+            Cultural
+          </button>
+        </div>
+
+        {/* PACKAGES GRID */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10">
           {tours.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg} />
           ))}
         </div>
-        <div className="mt-20 text-center bg-white p-10 rounded-2xl shadow-md">
-        <h3 className="text-2xl font-semibold">
-          Need a Custom Tour?
-        </h3>
 
-        <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-          Let our travel experts design a personalized itinerary tailored to your preferences.
-        </p>
+        {/* SUBTLE DIVIDER */}
+        <div className="mt-24 border-t border-gray-200"></div>
 
-        <button className="mt-6 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition">
-          Contact Us
-        </button>
-      </div>
+        {/* CTA (MORE PREMIUM) */}
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-semibold text-[#1A1A1A]">
+            Looking for something more personal?
+          </h3>
+
+          <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+            Let our travel experts design a fully customized journey tailored to your preferences.
+          </p>
+
+          <button className="mt-8 border px-10 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition">
+            Request Custom Tour
+          </button>
+        </div>
+
       </Container>
     </section>
   )
