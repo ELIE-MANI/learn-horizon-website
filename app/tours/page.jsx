@@ -1,10 +1,18 @@
 "use client"
 
+import { useState } from "react"
 import Container from "@/components/ui/Container"
 import PackageCard from "@/components/home/PackageCard"
 import { tours } from "@/lib/data/tour"
 
 export default function ToursPage() {
+  const [activeFilter, setActiveFilter] = useState("All")
+
+  const filteredTours =
+    activeFilter === "All"
+      ? tours
+      : tours.filter((tour) => tour.category === activeFilter)
+
   return (
     <section className="bg-[#F9F9F9] py-24">
       <Container>
@@ -14,35 +22,44 @@ export default function ToursPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
             Our Tours
           </h1>
-          <p className="mt-4 text-gray-600 leading-relaxed">
-            Explore our curated collection of Rwanda’s most unforgettable travel experiences —
-            from gorilla trekking to luxury safari adventures.
+          <p className="mt-4 text-gray-600">
+            Explore our curated collection of Rwanda’s travel experiences.
           </p>
         </div>
 
-        {/* FILTER BAR */}
+        {/* FILTER */}
         <div className="mt-10 flex justify-center gap-4 flex-wrap">
-          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
-            All Tours
-          </button>
-          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
-            Wildlife
-          </button>
-          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
-            Adventure
-          </button>
-          <button className="px-5 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
-            Cultural
-          </button>
-        </div>
-
-        {/* PACKAGES GRID */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10">
-          {tours.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} />
+          {["All", "Wildlife", "Adventure", "Cultural"].map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2 border rounded-full text-sm transition ${
+                activeFilter === filter
+                  ? "bg-black text-white"
+                  : "hover:bg-black hover:text-white"
+              }`}
+            >
+              {filter}
+            </button>
           ))}
         </div>
 
+        {/* COUNT + SORT */}
+        <div className="mt-8 flex justify-between items-center">
+          <p className="text-sm text-gray-500">
+            Showing {filteredTours.length} experiences
+          </p>
+        </div>
+         <p className="mt-6 text-center text-xs uppercase tracking-widest text-gray-400">
+            Handcrafted journeys across Rwanda
+          </p>
+        {/* GRID */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+          {filteredTours.map((pkg) => (
+            <PackageCard key={pkg.id} pkg={pkg} />
+          ))}
+        </div>
+       
         {/* SUBTLE DIVIDER */}
         <div className="mt-24 border-t border-gray-200"></div>
 
@@ -60,7 +77,6 @@ export default function ToursPage() {
             Request Custom Tour
           </button>
         </div>
-
       </Container>
     </section>
   )

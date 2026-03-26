@@ -22,7 +22,9 @@ export default function ToursPreview() {
         </div>
 
        <div className='mt-16 grid grid-cols-1 md:grid-cols-3 gap-8'>     
-       {tours.map((pkg) => (
+       {tours
+       .slice(0,3)
+       .map((pkg) => (
         <PackageCard 
         
         key={pkg.id}
