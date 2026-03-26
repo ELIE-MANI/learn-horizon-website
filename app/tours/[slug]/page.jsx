@@ -1,6 +1,5 @@
 import { tours } from "@/lib/data/tour"
 import Container from "@/components/ui/Container"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Gallery from "@/components/tour/Gallery"
@@ -106,14 +105,15 @@ export default async function TourDetails({ params }) {
     <div className="flex justify-between items-center">
       <span className="text-gray-600">Mid-Range</span>
       <span className="font-semibold text-[#1F6F5C]">
-        {tour.pricing?.midRange}
+        {tour.pricing?.budget}
+       
       </span>
     </div>
 
     <div className="flex justify-between items-center">
       <span className="text-gray-600">Budget</span>
       <span className="font-semibold text-[#1F6F5C]">
-        {tour.pricing?.budget}
+        {tour.pricing?.midRange}
       </span>
     </div>
 
