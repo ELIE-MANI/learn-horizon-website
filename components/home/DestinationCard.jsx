@@ -11,7 +11,7 @@ export default function DestinationCard({ title, image, description,slug }) {
           src={image}
           alt={title}
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover group-hover:scale-110 transition duration-700"
         />
 
