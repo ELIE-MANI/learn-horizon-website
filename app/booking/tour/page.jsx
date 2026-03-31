@@ -143,7 +143,27 @@ useEffect(() => {
             </button>
 
           </form>
+           {submitStatus === "success" && (
+            <div className="mt-6 p-5 bg-green-50 border border-green-200 rounded-xl">
+              <p className="text-green-800 font-semibold">
+                ✓ Booking request sent successfully
+              </p>
 
+              <p className="text-green-600 text-sm mt-1">
+                Our travel team will contact you within 24 hours.
+              </p>
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div className="mt-6 p-5 bg-red-50 border border-red-200 rounded-xl">
+              <p className="text-red-800 font-semibold">Booking failed</p>
+
+              <p className="text-red-600 text-sm">
+                Please try again or contact support.
+              </p>
+            </div>
+          )}
         </div>
       </Container>
     </section>
