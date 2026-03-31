@@ -20,6 +20,7 @@ export default async function DestinationDetails({ params }) {
             src={destination.image}
             alt={destination.title}
             fill
+            loading="eager"
             className="object-cover"
           />
         </div>
