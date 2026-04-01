@@ -70,7 +70,7 @@ export default function Navbar() {
 
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ${
-          isOpen ? "max-h-[500px]" : "max-h-0"
+          isOpen ? "max-h-125" : "max-h-0"
         }`}
       >
         <div className="bg-[#1A1A1A] flex flex-col items-center gap-6 py-6 text-sm font-medium">
