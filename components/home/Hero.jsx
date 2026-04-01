@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <div className='h-screen relative'>
       <Image
-        src="/image/hero3.jpg"
+        src="/image/rwanda.jpg"
         alt="Hero Image"
         fill
         style={{objectFit:"priority"}}

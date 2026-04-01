@@ -8,7 +8,7 @@ export default function AboutPreview() {
       <div className="grid md:grid-cols-2 gap-16 items-center">
       <div >
         <Image
-          src="/image/about.jpg"
+          src="/image/about2.jpg"
           alt="About Image"
           width={600}
           height={400}
