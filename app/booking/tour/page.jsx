@@ -13,8 +13,11 @@ import { useEffect } from "react";
 export default function TourBooking() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [mounted, setMounted] = useState(false);
+
+
   const searchParams = useSearchParams();
-  const tourFromUrl = searchParams.get("tour");
+  const tourFromUrl = mounted ? searchParams.get("tour") : null;
   console.log("tourSchema:", tourSchema);
   const {
     register,
@@ -27,13 +30,18 @@ export default function TourBooking() {
       tourName: tourFromUrl || "",
     },
   });
-  useEffect(() => {
-    if (tourFromUrl) {
-      reset({
-        tourName: tourFromUrl,
-      });
-    }
-  }, [tourFromUrl, reset]);
+ useEffect(() => {
+  if (tourFromUrl) {
+    reset((prev) => ({
+      ...prev,
+      tourName: tourFromUrl,
+    }));
+  }
+  
+}, [tourFromUrl]);
+useEffect(() => {
+  setMounted(true);
+}, []);
   const onSubmit = async (data) => {
     if (isSubmitting) return;
 
