@@ -3,6 +3,7 @@
 import Container from "@/components/ui/Container"
 import DestinationCard from "@/components/home/DestinationCard"
 import { destinations } from "@/lib/data/destinations"
+import Link from "next/link"
 
 export default function DestinationsPage() {
   return (
@@ -43,10 +44,11 @@ export default function DestinationsPage() {
           <p className="text-gray-500 mt-3 max-w-xl mx-auto">
             Let our travel experts help you choose the perfect destination based on your interests.
           </p>
-
-          <button className="mt-6 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition">
+         <Link href={"/contact"}>
+          <button className="mt-6 bg-black text-white px-8 py-3 rounded-lg cursor-pointer hover:bg-gray-800 transition">
             Contact Us
           </button>
+            </Link>
         </div>
 
       </Container>

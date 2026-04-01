@@ -2,6 +2,7 @@ import React from 'react'
 import PackageCard from './PackageCard'
 import Container from '../ui/Container'
 import { tours } from '@/lib/data/tour'
+import Link from 'next/link'
 
 export default function ToursPreview() {
   return (
@@ -39,10 +40,12 @@ export default function ToursPreview() {
         <p className='text-gray-500 mt-3 max-w-xl mx-auto'>
          Let our travel experts design a personalized itinerary tailored to your preferences and schedule
         </p>
+        <Link href={"/contact"}>
         <button className='mt-8 border px-8 py-3 text-sm bg-black text-white hover:cursor-pointer hover:bg-white hover:text-black transition duration-700'>
         CONTACT US
         </button>
-      </div>
+      </Link>
+       </div>
       </Container>
     </section>
   )

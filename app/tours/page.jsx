@@ -4,6 +4,8 @@ import { useState } from "react"
 import Container from "@/components/ui/Container"
 import PackageCard from "@/components/home/PackageCard"
 import { tours } from "@/lib/data/tour"
+import Link from "next/link"
+
 
 export default function ToursPage() {
   const [activeFilter, setActiveFilter] = useState("All")
@@ -72,10 +74,11 @@ export default function ToursPage() {
           <p className="text-gray-500 mt-3 max-w-xl mx-auto">
             Let our travel experts design a fully customized journey tailored to your preferences.
           </p>
-
+           <Link href={"/contact"}>
           <button className="mt-8 border px-10 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition">
             Request Custom Tour
           </button>
+          </Link>
         </div>
       </Container>
     </section>

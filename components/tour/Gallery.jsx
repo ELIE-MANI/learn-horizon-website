@@ -43,7 +43,7 @@ export default function Gallery({ images }) {
             {/* LUXURY TEXT */}
             <div className="absolute bottom-10 left-10 text-white">
               <p className="text-sm uppercase tracking-widest">
-                Explore Rwanda
+                Explore East Africa's Hidden Gems
               </p>
               <h2 className="text-3xl md:text-4xl font-bold">
                 Unforgettable Experience
@@ -69,6 +69,8 @@ export default function Gallery({ images }) {
               src={img}
               alt="thumbnail"
               fill
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, 25vw"
               className="object-cover hover:scale-110 transition duration-500"
             />
           </div>

@@ -127,11 +127,11 @@ export default function ContactPage() {
           >
             <div>
               <h3 className="font-semibold text-lg text-[#1A1A1A]">Email</h3>
-              <p>info@horizontravel.com</p>
+              <p>horizonlearn57@gmail.com</p>
             </div>
             <div>
               <h3 className="font-semibold text-lg text-[#1A1A1A]">Phone</h3>
-              <p>+250 788 123 456</p>
+              <p>+250 782 118 909</p>
             </div>
             <div>
               <h3 className="font-semibold text-lg text-[#1A1A1A]">Address</h3>

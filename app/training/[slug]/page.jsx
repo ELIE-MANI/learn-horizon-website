@@ -15,7 +15,7 @@ export default async function TrainingDetails({ params }) {
     <section className="bg-[#F9F9F9] py-24">
       <Container>
 
-        <div className="relative h-[400px] rounded-2xl overflow-hidden">
+        <div className="relative h-96 rounded-2xl overflow-hidden">
           <Image
             src={item.image}
             alt={item.title}
