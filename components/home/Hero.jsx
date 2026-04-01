@@ -11,6 +11,7 @@ export default function Hero() {
         src="/image/rwanda.jpg"
         alt="Hero Image"
         fill
+        loading="eager"
         style={{objectFit:"priority"}}
         className="opacity-70 object-cover"
       />

@@ -26,12 +26,12 @@ const {
 const returnTrip = watch("returnTrip");
 useEffect(() => {
   if (!returnTrip) {
-   reset({
-  ...watch(),
-  returnDate: undefined
-});
+    reset((prev) => ({
+      ...prev,
+      returnDate: undefined
+    }));
   }
-}, [returnTrip, reset]);
+}, [returnTrip]);
 
 const onSubmit = async (data) => {
   
