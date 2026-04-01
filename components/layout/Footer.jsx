@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="border-t border-gray-800 text-center py-6 text-sm text-gray-500">
-        © {new Date().getFullYear()} Learn Horizon. All rights reserved.
+         © 2026 Learn Horizon. All rights reserved.
       </div>
     </footer>
   );
